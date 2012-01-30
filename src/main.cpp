@@ -9,8 +9,8 @@ void printUsage( ) {
     std::cout << "Usage: cylinder                  launch GUI" << "\n";
     std::cout << "   or: cylinder [arguments]      run in batch mode" << "\n\n";
     std::cout << "Arguments:\n";
-    std::cout << "  -h, --height <integer>         Height of the cylinder\n";
-    std::cout << "  -r, --radius <integer>         Radius of the cylinder\n";
+    std::cout << "  -h, --height <float>           height of the cylinder\n";
+    std::cout << "  -r, --radius <float>           radius of the cylinder\n";
 }
 
 int processBatch( int argc, char *argv[] ) {
@@ -27,11 +27,25 @@ int processBatch( int argc, char *argv[] ) {
         } else if ( strcmp( argv[i], "-h" ) == 0 ||
                     strcmp( argv[i], "--height" ) == 0 ) {
 
-            height = atof( argv[++i] );
+            /* Don't try to read an argument that doesn't exist (segmentation fault) */
+            if ( ++i < argc && argv[i][0] != '-' ) {
+                height = atof( argv[i] );
+            } else {
+                printUsage();
+                
+                return EXIT_FAILURE;
+            }
         } else if ( strcmp( argv[i], "-r" ) == 0 ||
                     strcmp( argv[i], "--radius" ) == 0 ) {
 
-            radius = atof( argv[++i] );
+            /* Don't try to read an argument that doesn't exist (segmentation fault) */
+            if ( ++i < argc && argv[i][0] != '-' ) {
+                radius = atof( argv[i] );
+            } else {
+                printUsage();
+
+                return EXIT_FAILURE;
+            }
         } else {
             std::cout << "cylinder: invalid parameter " << argv[i] << "\n\n";
             printUsage();

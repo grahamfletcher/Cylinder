@@ -16,4 +16,8 @@ SOURCES += src/main.cpp \
            src/CylinderGLWidget.cpp \
            src/MainWindow.cpp
 
-LIBS +=
+test.target = test
+test.commands = ./test.sh;
+test.depends =
+
+QMAKE_EXTRA_TARGETS += test
