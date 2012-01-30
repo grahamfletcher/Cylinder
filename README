@@ -5,7 +5,7 @@ Graham Fletcher (grahamfletchergt@gmail.com)
 
 1. INTRODUCTION
 
-Thank you for taking the time to review my code sample. This file gives a brief overview of what is necessary to see a proper demonstration of the executable. While the assignment welcomed the use of a GUI, it did not specify any specific UI toolkit. I decided to use Qt. If you don't have Qt installed, you won't be able to compile and run the program, but you can find several screenshots of the GUI in the "screenshots" directory.
+Thank you for taking the time to review my code sample. This file gives a brief overview of what steps should be followed to see a proper demonstration of the Cylinder program. While the assignment welcomed the use of a GUI, it did not specify any specific UI toolkit. I decided to use Qt. If you don't have Qt installed, you won't be able to compile and run the program, but you can find several screenshots of the GUI in the "screenshots" directory.
 
 This project was tracked using Git and can be cloned using the following command:
 
@@ -45,3 +45,4 @@ Two of the tests should fail and respond by printing the usage for the program.
 For more information on how to use the program, run the following command:
 
     $bin/cylinder --help
+
