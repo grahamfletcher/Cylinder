@@ -15,7 +15,7 @@ MainWindow::MainWindow( QWidget *parent ) : QDialog( parent ) {
     createObjects();
     makeLayout();
 
-    setWindowTitle( "Cylinder - CDL Systems Sample Program" );
+    setWindowTitle( "Cylinder: CDL Systems Sample Program" );
 
     heightSlider->setValue( 5 * MAX_HEIGHT );
     radiusSlider->setValue( 5 * MAX_RADIUS );
@@ -44,12 +44,6 @@ void MainWindow::createObjects() {
     heightSlider->setRange( 0, (10 * MAX_HEIGHT) );
     radiusSlider->setRange( 0, (10 * MAX_RADIUS) );
 
-    //heightSlider->setTickInterval( 100 );
-    //radiusSlider->setTickInterval( 50 );
-
-    //heightSlider->setTickPosition( QSlider::TicksRight );
-    //radiusSlider->setTickPosition( QSlider::TicksBelow );
-    
     QObject::connect( heightSlider, SIGNAL( valueChanged( int ) ),
                       this,         SLOT( heightSliderChanged( int ) ) );
     QObject::connect( radiusSlider, SIGNAL( valueChanged( int ) ),
@@ -58,19 +52,21 @@ void MainWindow::createObjects() {
 
     /* Labels */
 
-    heightLabel = new QLabel( "0.0", this );
-    radiusLabel = new QLabel( "0.0", this );
+    heightLabel =      new QLabel( "0.0", this );
+    radiusLabel =      new QLabel( "0.0", this );
     surfaceAreaLabel = new QLabel( "0.0", this );
-    volumeLabel = new QLabel( "0.0", this );
+    volumeLabel =      new QLabel( "0.0", this );
 }
 
 void MainWindow::makeLayout() {
+
     /* Create/setup widgets */
     cylinderGLWidget->setFixedSize( (3 * MAX_HEIGHT), (6 * MAX_RADIUS) );
-    QLabel *heightBuddy = new QLabel( "Height:", this );
-    QLabel *radiusBuddy = new QLabel( "Radius:", this );
+
+    QLabel *heightBuddy =      new QLabel( "Height:",       this );
+    QLabel *radiusBuddy =      new QLabel( "Radius:",       this );
     QLabel *surfaceAreaBuddy = new QLabel( "Surface area:", this );
-    QLabel *volumeBuddy = new QLabel( "Volume:", this );
+    QLabel *volumeBuddy =      new QLabel( "Volume:",       this );
 
     QFrame *line = new QFrame( this );
     line->setFrameShape( QFrame::HLine );
@@ -104,6 +100,9 @@ void MainWindow::makeLayout() {
 
     /* Apply the layout to the main window */
     setLayout( verticalLayout );
+
+    /* Disable resizing of the window */
+    layout()->setSizeConstraint(QLayout::SetFixedSize);
 }
 
 void MainWindow::heightSliderChanged( int value ) {

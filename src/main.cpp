@@ -3,6 +3,7 @@
 #include <QApplication>
 
 #include "Cylinder.h"
+#include "MainWindow.h"
 
 void printUsage( ) {
     std::cout << "Usage: cylinder                  launch GUI" << "\n";
@@ -14,7 +15,7 @@ void printUsage( ) {
 
 int processBatch( int argc, char *argv[] ) {
 
-    int radius = -1, height = -1;
+    double radius = 0, height = 0;
 
     for ( int i = 1; i < argc; i++ ) {
 
@@ -39,8 +40,14 @@ int processBatch( int argc, char *argv[] ) {
         }
     }
 
+    if ( height < 0 || radius < 0 ) {
+        std::cout << "cylinder: dimensions cannot be negative\n";
+
+        return EXIT_FAILURE;
+    }
+
     /* Create the cylinder object */
-    Cylinder cylinder( qApp, radius, height );
+    Cylinder cylinder( height, radius );
 
     /* Print the properties of the cylinder */
     std::cout << "Surface area: " << cylinder.getSurfaceArea() << "\n";
@@ -58,7 +65,10 @@ int main ( int argc, char *argv[] ) {
         return processBatch( argc, argv );
     }
     
-    //QApplication app( argc, argv );
+    QApplication app( argc, argv );
 
-    //return app.exec();
+    MainWindow *mainWindow = new MainWindow();
+    mainWindow->show();
+
+    return app.exec();
 }

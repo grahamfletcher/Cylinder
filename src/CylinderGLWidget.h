@@ -26,7 +26,7 @@ protected:
     void updateProperties();
 
     void initializeGL();
-    void resizeGL();
+    void resizeGL( int width, int height );
     void paintGL();
     void mousePressEvent( QMouseEvent *event );
     void mouseMoveEvent( QMouseEvent *event );
@@ -35,10 +35,14 @@ protected:
 private:
     void draw();
 
+    GLUquadricObj *quadric;
+    GLuint texture;
+    
     GLfloat rotationX;
     GLfloat rotationY;
     GLfloat rotationZ;
-    QColor faceColors[4];
-    QPoint lastPos;
+
+    QPoint lastPosition;
+
 };
 #endif

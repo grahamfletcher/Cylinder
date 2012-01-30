@@ -1,3 +1,4 @@
+QT += opengl
 TEMPLATE = app
 TARGET =
 DEPENDPATH +=
@@ -8,11 +9,11 @@ MOC_DIR = moc
 
 # Input
 HEADERS += src/Cylinder.h \
-           src/MainWindow.h \
-           src/VideoSelectDialog.h
+           src/CylinderGLWidget.h \
+           src/MainWindow.h
 SOURCES += src/main.cpp \
            src/Cylinder.cpp \
-           src/MainWindow.cpp \
-           src/VideoSelectDialog.cpp
+           src/CylinderGLWidget.cpp \
+           src/MainWindow.cpp
 
 LIBS +=

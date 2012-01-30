@@ -5,10 +5,12 @@
 
 #define PI 3.1415926535897932384626433832795
 
-Cylinder::Cylinder( QObject *parent, double height, double radius ) : QObject( parent ), height( height ), radius( radius ) {
-    if ( height > 0 && radius > 0 ) {
-        updateProperties();
-    }
+Cylinder::Cylinder( double height, double radius ) {
+
+    this->height = qMax( 0.0, height );
+    this->radius = qMax( 0.0, radius );
+
+    updateProperties();
 }
 
 Cylinder::~Cylinder() {
@@ -27,10 +29,10 @@ double Cylinder::getVolume() {
     return volume;
 }
 
-void Cylinder::setHeight( double h ) {
-    if ( h >= 0 ) {
+void Cylinder::setHeight( double height ) {
+    if ( height >= 0 ) {
         cylinderMutex.lock();
-        height = h;
+        this->height = height;
         cylinderMutex.unlock();
 
         updateProperties();
@@ -39,10 +41,10 @@ void Cylinder::setHeight( double h ) {
     }
 }
 
-void Cylinder::setRadius( double r ) {
-    if ( r >= 0 ) {
+void Cylinder::setRadius( double radius ) {
+    if ( radius >= 0 ) {
         cylinderMutex.lock();
-        radius = r;
+        this->radius = radius;
         cylinderMutex.unlock();
 
         updateProperties();
@@ -54,11 +56,6 @@ void Cylinder::setRadius( double r ) {
 void Cylinder::updateProperties() {
     QMutexLocker locker( &cylinderMutex );
 
-    /* Surface area */
     surfaceArea = 2 * PI * radius * (radius + height);
-    emit gotNewSurfaceArea( surfaceArea );
-
-    /* Volume */
     volume = PI * radius * radius * height;
-    emit gotNewVolume( volume );
 }
