@@ -1,3 +1,8 @@
+Graham Fletcher (grahamfletchergt@gmail.com)
+30 January 2012
+
+
+
 1. INTRODUCTION
 
 Thank you for taking the time to review my code sample. This file gives a breif overview of what is necessary to see a proper demonstration of the executable. While the assignment welcomed the use of a GUI, it did not specify any specific UI toolkit. I decided to use Qt. If you don't have Qt installed, you won't be able to compile and run the program, but you can find several screenshots of the GUI in the "screenshots" directory.

@@ -1,3 +1,10 @@
+/*
+ * CylinderGLWidget.h
+ *
+ * Graham Fletcher (grahamfletchergt@gmail.com)
+ * 30 January 2012
+ */
+
 #ifndef CYLINDERGLWIDGET_H
 #define CYLINDERGLWIDGET_H
 
@@ -16,12 +23,6 @@ signals:
     void gotNewSurfaceArea( double surfaceArea );
     void gotNewVolume( double volume );
 
-/*
-public slots:
-    void setHeight( double height );
-    void setRadius( double radius );
-*/
-
 protected:
     void updateProperties();
 
@@ -30,11 +31,8 @@ protected:
     void paintGL();
     void mousePressEvent( QMouseEvent *event );
     void mouseMoveEvent( QMouseEvent *event );
-    void mouseDoubleClickEvent( QMouseEvent *event );
 
 private:
-    void draw();
-
     GLUquadricObj *quadric;
     GLuint texture;
     
@@ -43,6 +41,5 @@ private:
     GLfloat rotationZ;
 
     QPoint lastPosition;
-
 };
 #endif

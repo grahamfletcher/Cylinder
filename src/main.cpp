@@ -1,3 +1,11 @@
+/*
+ * main.cpp
+ *
+ * Graham Fletcher (grahamfletchergt@gmail.com)
+ * 30 January 2012
+ */
+
+
 #include <iostream>
 #include <stdlib.h>
 #include <QApplication>

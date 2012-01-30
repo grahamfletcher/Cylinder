@@ -1,3 +1,10 @@
+/*
+ * MainWindow.cpp
+ *
+ * Graham Fletcher (grahamfletchergt@gmail.com)
+ * 30 January 2012
+ */
+
 #include <QtGlobal>
 #include <QFrame>
 #include <QGridLayout>
@@ -12,11 +19,14 @@
 #define MAX_RADIUS 50.0
 
 MainWindow::MainWindow( QWidget *parent ) : QDialog( parent ) {
+    /* Set everything up */
     createObjects();
     makeLayout();
 
+    /* Give us a nice window title */
     setWindowTitle( "Cylinder: CDL Systems Sample Program" );
 
+    /* Set each slider to the middle of its range */
     heightSlider->setValue( 5 * MAX_HEIGHT );
     radiusSlider->setValue( 5 * MAX_RADIUS );
 }
@@ -59,7 +69,6 @@ void MainWindow::createObjects() {
 }
 
 void MainWindow::makeLayout() {
-
     /* Create/setup widgets */
     cylinderGLWidget->setFixedSize( (3 * MAX_HEIGHT), (6 * MAX_RADIUS) );
 
@@ -106,23 +115,33 @@ void MainWindow::makeLayout() {
 }
 
 void MainWindow::heightSliderChanged( int value ) {
+    /* The slider only reports in integers; compensate for this */
     double height = (double) value / 10;
 
+    /* Update the CylinderGLWidget */
     cylinderGLWidget->setHeight( height );
+
+    /* Update the height label */
     heightLabel->setText( QString::number( height, 'f', 1 ) );
 }
 
 void MainWindow::radiusSliderChanged( int value ) {
+    /* The slider only reports in integers; compensate for this */
     double radius = (double) value / 10;
 
+    /* Update the CylinderGLWidget */
     cylinderGLWidget->setRadius( radius );
+
+    /* Update the radius label */
     radiusLabel->setText( QString::number( radius, 'f', 1 ) );
 }
 
 void MainWindow::updateSurfaceArea( double surfaceArea ) {
+    /* Update the surface area label */
     surfaceAreaLabel->setText( QString::number( surfaceArea, 'f', 1 ) );
 }
 
 void MainWindow::updateVolume( double volume ) {
+    /* Update the volume label */
     volumeLabel->setText( QString::number( volume, 'f', 1 ) );
 }

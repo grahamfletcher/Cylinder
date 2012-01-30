@@ -1,10 +1,16 @@
+/*
+ * MainWindow.h
+ *
+ * Graham Fletcher (grahamfletchergt@gmail.com)
+ * 30 January 2012
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QDialog>
 
 class CylinderGLWidget;
-
 class QLabel;
 class QSlider;
 

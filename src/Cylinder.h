@@ -1,3 +1,11 @@
+/*
+ * Cylinder.h
+ *
+ * Graham Fletcher (grahamfletchergt@gmail.com)
+ * 30 January 2012
+ */
+
+
 #ifndef CYLINDER_H
 #define CYLINDER_H
 
@@ -16,9 +24,9 @@ public:
     void setRadius( double radius );
 
 protected:
-    virtual void updateProperties();
+    virtual void updateProperties();    // "virtual" so it can be re-implemented in CylinderGLWidget
 
-    QMutex cylinderMutex;
+    QMutex cylinderMutex;    // be thread-safe
 
     double height;
     double radius;
